@@ -1,7 +1,6 @@
-
 # micrograd: A Minimal Autograd Engine for Deep Learning Education
 
-**micrograd** is a tiny educational library created by Andrej Karpathy to illustrate the inner workings of neural network training. As explained in his lecture "[The spelled-out intro to neural networks and backpropagation: building micrograd]([https://www.youtube.com/watch?v=VMj-3erMg0Q](https://www.youtube.com/watch?v=VMj-3S1tku0&t=4178s))", this library provides a step-by-step understanding of how backpropagation and automatic gradient calculation (autograd) are implemented.
+**micrograd** is a tiny educational library created by Andrej Karpathy to illustrate the inner workings of neural network training. As explained in his lecture "[The spelled-out intro to neural networks and backpropagation: building micrograd](https://www.youtube.com/watch?v=VMj-3S1tku0&t=4178s)", this library provides a step-by-step understanding of how backpropagation and automatic gradient calculation (autograd) are implemented.
 
 ## What is micrograd?
 
@@ -23,17 +22,17 @@ micrograd is a **scalar-valued autograd engine**. Autograd, short for automatic 
 
 1.  **Value Object:** micrograd introduces a `Value` object that wraps scalar numbers. These `Value` objects not only store data but also keep track of the operations they are involved in (their "children" and the operation that created them).
 2.  **Building Expressions:** You can build mathematical expressions by performing operations (+, \*, power, negation, etc.) on these `Value` objects. micrograd automatically constructs a **computation graph** representing these operations and dependencies.
-3.  **Forward Pass:** When you compute the final output of an expression, micrograd performs a forward pass through the graph, calculating the value at each node.
-4.  **Backward Pass (Backpropagation):** By calling the `.backward()` method on the final output `Value`, micrograd initiates backpropagation. This process traverses the computation graph in reverse, applying the chain rule of calculus to calculate the gradient of the output with respect to every `Value` object in the graph. Each `Value` object stores its gradient in the `.grad` attribute.
+3.  **Forward Pass:** When you compute the final output of an expression, micrograd performs a forward pass through the graph, calculating the value at each node. The output of the forward pass can be accessed using the `.data` attribute.
+4.  **Backward Pass (Backpropagation):** By calling the `.backward()` method on the final output `Value`, micrograd initiates backpropagation. This process traverses the computation graph in reverse, recursively applying the chain rule of calculus to calculate the gradient of the output with respect to every `Value` object in the graph. Each `Value` object stores its gradient in the `.grad` attribute. The derivative of a node with respect to the output (loss) is initially zero, and the `.backward()` method initializes the gradient of the final output to 1.
 5.  **Neural Network Library (`nn.py`):** Built on top of the `Value` object and the autograd engine, `nn.py` provides basic building blocks for neural networks:
-    *   **Neuron:** A fundamental unit that takes multiple inputs, applies weights and a bias, and passes the result through a non-linear activation function (like tanh or ReLU).
+    *   **Neuron:** A fundamental unit that takes multiple inputs, applies weights and a bias, and passes the result through a non-linear activation function (like tanh or ReLU). The weights and bias are initialized randomly.
     *   **Layer:** A collection of independent neurons.
     *   **MLP (Multi-Layer Perceptron):** A sequence of interconnected layers of neurons.
 6.  **Training:** micrograd enables the training of these neural networks by:
-    *   Defining a **loss function** that measures the discrepancy between the network's predictions and the desired targets.
+    *   Defining a **loss function** that measures the discrepancy between the network's predictions and the desired targets. The goal of training is to minimize this loss.
     *   Performing a forward pass to get the predictions and calculate the loss.
-    *   Performing a backward pass on the loss to compute gradients with respect to all the network's parameters (weights and biases).
-    *   Updating the parameters using **gradient descent** (or similar optimization algorithms) to minimize the loss.
+    *   Performing a backward pass on the loss to compute gradients with respect to all the network's parameters (weights and biases). It's important to **zero the gradients** before each backward pass to prevent accumulation from previous passes.
+    *   Updating the parameters using **gradient descent** (or similar optimization algorithms) to minimize the loss. This involves nudging the parameters in the opposite direction of their gradient.
 
 ## Repository Structure
 
@@ -65,5 +64,4 @@ While this is primarily an educational project, contributions and feedback are w
 
 ## License
 
-MIT License
-```
+`MIT License`
