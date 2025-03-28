@@ -38,8 +38,7 @@ micrograd is a **scalar-valued autograd engine**. Autograd, short for automatic 
 
 *   `engine.py`: Contains the implementation of the `Value` object and the core autograd engine (backpropagation).
 *   `nn.py`: Implements the neural network building blocks (`Module`, `Neuron`, `Layer`, `MLP`) on top of the `engine.py`.
-*   `test.py`: Includes tests to verify the correctness of micrograd by comparing its forward and backward passes with PyTorch.
-*   `demo.ipynb`: A Jupyter Notebook demonstrating a more complex binary classification example using micrograd.
+*   `demo.ipynb`: A Jupyter Notebook demonstrating a simple linear regreation problem example using micrograd.
 
 ## Getting Started
 
@@ -49,18 +48,6 @@ To start exploring micrograd, you can:
 2.  Open and run the `demo.ipynb` notebook in a Jupyter environment.
 3.  Examine the `engine.py` and `nn.py` files to understand the implementation details.
 4.  Refer to Andrej Karpathy's lecture "[The spelled-out intro to neural networks and backpropagation: building micrograd](https://www.youtube.com/watch?v=VMj-3erMg0Q)" for a detailed explanation and walkthrough.
-
-## Relation to PyTorch
-
-As demonstrated in the lecture and the `test.py` file, micrograd's design and functionality closely mirror the fundamental concepts of PyTorch. While PyTorch is significantly more efficient and feature-rich (handling tensors, supporting various hardware like GPUs, offering a wide range of neural network layers and optimization algorithms), micrograd provides a simplified, scalar-based perspective on the core mechanisms. Understanding micrograd can greatly enhance your comprehension of how PyTorch and other deep learning frameworks operate under the hood.
-
-## Further Learning and Discussion
-
-For further discussion and questions related to micrograd, please refer to the discussion forum or group linked in the video description of the associated lecture.
-
-## Contributions
-
-While this is primarily an educational project, contributions and feedback are welcome.
 
 ## License
 
