@@ -1,4 +1,4 @@
-```markdown
+
 # micrograd: A Minimal Autograd Engine for Deep Learning Education
 
 **micrograd** is a tiny educational library created by Andrej Karpathy to illustrate the inner workings of neural network training. As explained in his lecture "[The spelled-out intro to neural networks and backpropagation: building micrograd](https://www.youtube.com/watch?v=VMj-3erMg0Q)", this library provides a step-by-step understanding of how backpropagation and automatic gradient calculation (autograd) are implemented.
